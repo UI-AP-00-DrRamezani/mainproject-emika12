@@ -1,6 +1,6 @@
 package files;
-
-import account.making.*;
+import com.mysql.cj.xdevapi.Result;
+import files.mySQL.mySQLTable;
 import products.Product;
 import products.digital.laptop;
 import products.digital.mobile;
@@ -9,18 +9,30 @@ import products.house.television;
 import products.outfit.dressing;
 import products.outfit.shoes;
 import project.first.*;
+
+import java.io.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import account.making.*;
 import random.works.Comments;
 import random.works.Rate;
 import random.works.State;
 import saleing.Sale;
 
-import java.io.*;
+import static files.mySQL.saveMySQL.productWriteSQL;
+import static files.mySQL.saveMySQL.writeMySQL;
 
 public final class Savefiles
 {
     private final static String buyerSaver="D:\\saved data\\users\\buyers\\buyer ";
     private final static String sellerSaver="D:\\saved data\\users\\sellers\\seller ";
     private final static String productSaver="D:\\saved data\\categories";
+
+
+
+
+    //==================================================================
 
     public static void writingUsers() throws IOException {
 
@@ -38,6 +50,7 @@ public final class Savefiles
             else if (user.getAdmin() != null){
                 WriteAdmin(user);
             }
+            writeMySQL(user);
         }
     }
 
@@ -122,6 +135,7 @@ public final class Savefiles
 
             writingProducts(product);
             writingProducts2(product ,product_counter,fileAddress);
+            productWriteSQL(product);
             ++product_counter;
         }
 
@@ -372,6 +386,8 @@ public final class Savefiles
         if (!theDir.exists())
             theDir.mkdirs();
     }
+
+
 
 
 }

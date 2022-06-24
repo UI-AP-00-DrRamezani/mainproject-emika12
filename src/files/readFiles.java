@@ -1,6 +1,13 @@
 package files;
 
-import account.making.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
 import products.Product;
 import products.digital.laptop;
 import products.digital.mobile;
@@ -9,16 +16,14 @@ import products.house.television;
 import products.outfit.dressing;
 import products.outfit.shoes;
 import products.snacks.snacks;
-import project.first.*;
 import random.works.*;
+import account.making.*;
+
+import project.first.*;
 import saleing.Sale;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.util.ArrayList;
-import java.util.Scanner;
+import static files.mySQL.readMySQL.readSQLProducts;
+import static files.mySQL.readMySQL.readSQLUsers;
 
 public class readFiles {
 
@@ -32,6 +37,21 @@ public class readFiles {
     private static int snack_counter=1;
     private static int seller_counter=1;
     private static int buyer_counter=1;
+
+    //======================SQL reading command structures
+
+    private static String userReading="allusers";
+    private static String sellerMoreInfoRead="sellerextrainfo";
+    private static String productRead="products";
+
+
+    private static String userSelect=String.format("SELECT *FROM `%s`",userReading);
+    private static String sellerSelect=String.format("SELECT allusers.`Name` , allusers.`family name` , sellerextrainfo.`factory` ," +
+            "sellerextrainfo.`institute` ,sellerextrainfo.`work shop`  " +
+            "FROM `allusers` INNER JOIN `sellerextrainfo` ON allusers.`ID`= sellerextrainfo.`ID` ");
+    private static String produtSelect= String.format("SELECT *FROM %s",productRead);
+
+    //====================================================
 
 
     public static void mainRead() throws IOException, ClassNotFoundException,NullPointerException {
@@ -47,8 +67,12 @@ public class readFiles {
                 readSeller();
             else
                 readBuyer();
-
+            readSQLUsers(userSelect , sellerMoreInfoRead);
+            if (name.equals("sellers"))
+                readSQLUsers(sellerSelect ,userReading);
         }
+
+
     }
 
     public static void readAdmin() throws IOException, ClassNotFoundException {
@@ -220,6 +244,7 @@ public class readFiles {
                 project.users.add(seller);
                 //reading the products
                 readProducts(seller, address + eachFile + "/Products");
+                //readSQLProducts(produtSelect);
             }
         }
     }
@@ -318,6 +343,10 @@ public class readFiles {
 
         }
     }
+
+
+
+    //==========================getter setter==========================================
 
     public static int getTv_counter() {
         return tv_counter;

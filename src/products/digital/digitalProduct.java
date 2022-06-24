@@ -6,6 +6,7 @@ import saleing.IDiscountFeature;
 import saleing.Sale;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 
 abstract public class digitalProduct extends Product implements IGuaranteeValue, IDiscountFeature

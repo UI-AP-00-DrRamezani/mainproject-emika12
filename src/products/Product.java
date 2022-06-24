@@ -1,17 +1,15 @@
 package products;
 
 import account.making.*;
-import products.digital.digitalProduct;
-import products.house.houseProducts;
-import products.outfit.dressing;
-import products.outfit.outfit;
-import products.outfit.shoes;
-import products.snacks.snacks;
 import random.works.*;
-import saleing.Sale;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import products.digital.*;
+import products.house.*;
+import products.outfit.*;
+import products.snacks.*;
+import saleing.Sale;
 
 abstract public class Product implements Comparable, Serializable
 {
@@ -175,6 +173,15 @@ abstract public class Product implements Comparable, Serializable
         this.star= tempt;
     }
 
+
+    //==========================================mySQL ==========================
+
+    public String mySQLToString(String value)
+    {
+        return  "' "+value+" ' ,";
+    }
+
+
     //===============================getter setter
 
     public String getCategory_model() {
@@ -298,4 +305,5 @@ abstract public class Product implements Comparable, Serializable
     public void setDeleted_product(boolean deleted_product) {
         this.deleted_product = deleted_product;
     }
+
 }
