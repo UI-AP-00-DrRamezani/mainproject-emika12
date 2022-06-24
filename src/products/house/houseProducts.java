@@ -2,6 +2,10 @@ package products.house;
 
 import products.IGuaranteeValue;
 import products.Product;
+import saleing.IDiscountFeature;
+import saleing.Sale;
+
+import java.time.LocalDate;
 
 abstract public class houseProducts extends Product implements IGuaranteeValue
 {

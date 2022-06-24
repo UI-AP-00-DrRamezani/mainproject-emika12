@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="flatlaf-demo-2.3">
+    <CLASSES>
+      <root url="jar://D:/programsss/zz.in needs/flatlaf-demo-2.3.jar!/" />
+      <root url="jar://D:/programsss/zz.in needs/jar_files/mysql-connector-java-8.0.29.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

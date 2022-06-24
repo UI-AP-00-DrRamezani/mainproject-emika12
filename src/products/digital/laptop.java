@@ -1,5 +1,9 @@
 package products.digital;
 
+import saleing.Sale;
+
+import java.time.LocalDate;
+
 public class laptop extends digitalProduct
 {
     private String processor_Model;

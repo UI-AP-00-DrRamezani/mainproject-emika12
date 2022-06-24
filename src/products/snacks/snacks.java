@@ -2,10 +2,12 @@ package products.snacks;
 
 import account.making.Admin;
 import products.Product;
+import products.outfit.ShoesModel;
 import saleing.IDiscountFeature;
 import saleing.Sale;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class snacks extends Product implements IDiscountFeature
 {
